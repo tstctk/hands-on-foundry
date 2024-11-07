@@ -199,6 +199,7 @@ contract Attacker is ERC20 {
 
             // For first deposit you'll need:
             // - Get balance: IERC20(PENDLE_LPT_0x6010).balanceOf(address(this))
+            // NOTE: saved_bal is already defined for you at ~line 115 use it store the balance
             // - Approve: IERC20(PENDLE_LPT_0x6010).approve(PendleStaking_0x6e79, amount)
             // - Deposit: Interfaces(PendleMarketDepositHelper_0x1c1f).depositMarket(PENDLE_LPT_0x6010, amount)
             // TODO YOUR CODE HERE FOR FIRST DEPOSIT PENDLE_LPT_0x6010 (remember you need to get balance and approve first)
@@ -228,6 +229,7 @@ contract Attacker is ERC20 {
             }
 
             // TODO YOUR CODE HERE FOR SECOND DEPOSIT with PENDLE_LPT_0x038c following same process as previous deposit
+            // NOTE: Feel free to use any variable names here which you will need to define with uint256 var_name, do not reuse saved_bal
         }
     }
 
