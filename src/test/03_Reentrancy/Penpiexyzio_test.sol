@@ -289,7 +289,7 @@ contract Attacker is ERC20 {
         address[] memory _markets = new address[](1);
         _markets[0] = PENDLE_LPT;
 
-        // Trigger the vulnerable reward harvesting
+        // Trigger the vulnerable reward harvesting in the contract PendleStaking_0x6e79
         // This will call back into our claimRewards function
         // TODO YOUR CODE HERE: Trigger the vulnerable reward harvesting batchHarvestMarketRewards
 
