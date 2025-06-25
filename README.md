@@ -6,7 +6,7 @@ All credits for the templates and base PoC code goes to contributors over at htt
 
 ## Getting Started
 
-- Follow the [instructions](https://book.getfoundry.sh/getting-started/installation.html) to install [Foundry](https://github.com/foundry-rs/foundry).
+- Follow the [instructions](https://getfoundry.sh/introduction/installation) to install [Foundry](https://github.com/foundry-rs/foundry).
 - Clone the existing repository with `git clone <repo_url>`
 
 There are a total of 3 exercises here covering
